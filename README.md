@@ -40,7 +40,7 @@ unzip skill-overdev-context.zip -d .claude/skills/
 - **SKILL.md** — o contrato: 8 pisos inegociáveis (fundação antes do laço; decisão só entra se
   acordada e com origem rastreável; plano ancorado no grafo real do índice; checklist exaustivo
   por contagem; convenção de 2 níveis `- [ ]`/`- [H ]`/`- [~]`; rastreabilidade decisão→item→nó;
-  saída durável no archive + control-plane `.overdev/`; esta skill MONTA, não CONSOME) + mapa de
+  saída durável no archive + control-plane `.schematize/overdev/`; esta skill MONTA, não CONSOME) + mapa de
   references.
 - **references/** — `contexto` (o método completo: as 5 etapas decisões → grafo → plano →
   checklist → briefing, o gate da Fase 0, o que a skill NÃO faz), `decisoes` (varrer a sessão/repo,
@@ -59,7 +59,7 @@ Digite `/overdev-context-help` pra ver todos. Em resumo:
 | Comando | O que faz |
 |---|---|
 | `/overdev-context-help` | lista todos os comandos do schematize-overdev-context |
-| `/overdev-context-build` | **monta a Fase 0**: colhe as DECISÕES acordadas (`.overdev/DECISOES.md`), ancora no GRAFO do índice, escreve o PLAN pesado (`.overdev/PLAN.md`), deriva o CHECKLIST exaustivo (`.overdev/CHECKLIST.md`) e entrega o DOCUMENTO DE CONTEXTO GERAL (briefing) — pronto pro `/eng-overdev` consumir |
+| `/overdev-context-build` | **monta a Fase 0**: colhe as DECISÕES acordadas (`.schematize/overdev/DECISOES.md`), ancora no GRAFO do índice, escreve o PLAN pesado (`.schematize/overdev/PLAN.md`), deriva o CHECKLIST exaustivo (`.schematize/overdev/CHECKLIST.md`) e entrega o DOCUMENTO DE CONTEXTO GERAL (briefing) — pronto pro `/eng-overdev` consumir |
 | `/overdev-context-load` | carrega à força TODO o corpo normativo (contexto, decisões, plano/checklist, briefing) e passa a aplicá-lo |
 | `/overdev-context-claude` | cria ou mescla o `CLAUDE.md` sempre-on de montagem de contexto na raiz do repo |
 | `/overdev-context-cc` | context compact: gera handoff no archive e roda `/compact` |
