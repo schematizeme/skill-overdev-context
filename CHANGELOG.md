@@ -1,6 +1,14 @@
 # Changelog — schematize-overdev-context
 
-Formato: [Keep a Changelog](https://keepachangelog.com/pt-BR/). Versionamento semântico.
+Todas as mudanças relevantes deste pacote, no formato [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/),
+com versionamento [SemVer](https://semver.org/lang/pt-BR/).
+
+
+## [0.2.1] — 2026-08-21
+Saneamento do catálogo conforme a vistoria de 2026-08-21.
+
+### Mudado
+- `install.sh` regenerado do template único do catálogo: **exclui `*.zip`** do que é copiado para dentro da skill instalada, **poda o comando removido** (sem a poda, comando morto sobrevive para sempre na máquina de quem já instalou) e instala os hooks de `assets/hooks`/`scripts/hooks` em `.claude/hooks/`.
 
 ## [0.2.0] — 2026-08-18
 
