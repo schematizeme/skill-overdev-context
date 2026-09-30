@@ -112,7 +112,7 @@ Independente do reference, estes limites nunca são cruzados:
    em itens do tamanho de **uma micro-task de Sonnet**, cada um com tag de executor `[sonnet]`
    (default) ou `[opus: <motivo>]` (só após escalada registrada); "decidir arquitetura" não é
    item — o desenho é do orquestrador. O briefing declara que o principal só despacha/revisa e a
-   escada: sonnet → correção pelo mesmo subagent (≤2 rodadas) → re-decompor → opus.
+   escada: sonnet → correção pelo mesmo subagent (≤2 rodadas) → re-decompor → opus. **Sem frota ociosa** (`schematize-engineering` → `references/orquestracao.md` §9.6): agent idle com pendência executável volta ao trabalho; pendência que depende de outro agent → mata e enfileira com gatilho de dependência; terminou → mata.
 
 ## Relação com as outras skills
 

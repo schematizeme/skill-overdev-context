@@ -72,7 +72,10 @@ barato executa" (`schematize-engineering` → `references/orquestracao.md` §9):
 desenvolve — só despacha e revisa**; cada item do CHECKLIST (já com tag `[sonnet]`/`[opus:
 motivo]`) é executado por subagent `sonnet`; a escada de falha é **sonnet → correção pelo mesmo
 subagent (≤2 rodadas) → re-decompor → opus** (motivo no checkpoint). Resuma isto em 2–3 linhas no
-cabeçalho do briefing e referencie a §9; não duplique o texto.
+cabeçalho do briefing e referencie a §9; não duplique o texto. Declare também a regra de **frota
+ociosa** (`schematize-engineering` → `references/orquestracao.md` §9.6): agent idle com pendência executável volta ao trabalho; pendência
+que depende de outro agent → mata e enfileira com gatilho de dependência; terminou → mata; a
+varredura roda a cada item fechado no laço.
 
 ## Passagem de bastão (fim da montagem)
 

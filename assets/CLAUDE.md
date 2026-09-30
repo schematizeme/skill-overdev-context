@@ -47,7 +47,7 @@ de agir — não trabalhe de memória.
    sai decomposto em itens do tamanho de **uma micro-task de Sonnet**, cada um com tag `[sonnet]`
    (default) ou `[opus: <motivo>]` (só após escalada registrada). Falhou → o **mesmo subagent
    corrige** (≤2 rodadas) → re-decompõe → só então `opus`. Escalar não é pergunta (segue
-   VETADO perguntar); esgotou Opus → `park` + `- [~]`.
+   VETADO perguntar); esgotou Opus → `park` + `- [~]`. **Sem frota ociosa** (`schematize-engineering` → `references/orquestracao.md` §9.6): agent idle com pendência executável volta ao trabalho; pendência que depende de outro agent → mata e enfileira com gatilho de dependência; terminou → mata.
 
 ## Como se monta aqui
 

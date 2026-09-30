@@ -4,6 +4,18 @@ Todas as mudanças relevantes deste pacote, no formato [Keep a Changelog](https:
 com versionamento [SemVer](https://semver.org/lang/pt-BR/).
 
 
+## [0.4.0] — 2026-09-30
+
+Pedido do dono: agents idle poluem a tela e seguram recurso. O briefing passa a declarar a regra
+de **frota ociosa** (`schematize-engineering` → `references/orquestracao.md` §9.6).
+
+### Adicionado
+- Frase-resumo "Sem frota ociosa" em `assets/CLAUDE.md` (item 9) e `SKILL.md` (piso 9).
+- `references/briefing.md`: seção "O que o briefing declara sobre EXECUÇÃO" declara a varredura de ociosos.
+
+### Mantido (piso inalterado)
+- Fundação antes do laço, decisão só se acordada, checklist exaustivo por contagem, tag `[sonnet]`/`[opus]`, MONTA-não-CONSOME; parar para perguntar segue VETADO.
+
 ## [0.3.0] — 2026-09-30
 
 Pedido do dono, por **custo**: o agent principal (o que fala com o humano) não desenvolve —
