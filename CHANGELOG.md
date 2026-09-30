@@ -4,6 +4,29 @@ Todas as mudanças relevantes deste pacote, no formato [Keep a Changelog](https:
 com versionamento [SemVer](https://semver.org/lang/pt-BR/).
 
 
+## [0.3.0] — 2026-09-30
+
+Pedido do dono, por **custo**: o agent principal (o que fala com o humano) não desenvolve —
+planeja e despacha; a execução vai para micro-tasks baratas (`sonnet` por padrão), e `opus` só
+entra depois que o Sonnet falhar. Regra canônica em `schematize-engineering` →
+`references/orquestracao.md` §9.
+
+### Adicionado
+- **PLAN/CHECKLIST no tamanho de uma micro-task de Sonnet** (`references/plano-checklist.md`):
+  cada item com entrada/saída/arquivo-alvo/prova; "decidir arquitetura" não é item — o desenho é
+  do orquestrador na Fase 0.
+- **Tag de executor por item do CHECKLIST:** `[sonnet]` (default) ou `[opus: <motivo>]` (só após
+  escalada registrada), com exemplo de linha.
+- **Briefing declara a execução** (`references/briefing.md`, `references/contexto.md`): o principal
+  só despacha/revisa; escada sonnet → correção pelo mesmo subagent (≤2 rodadas) → re-decompor → opus.
+- Piso "Orquestrador não desenvolve; subagent barato executa" em `SKILL.md`, `assets/CLAUDE.md` e
+  `assets/commands/overdev-context-build.md`.
+
+### Mantido (piso inalterado)
+- Fundação antes do laço, decisão só se acordada, plano ancorado no grafo, checklist exaustivo por
+  contagem, 2 níveis, rastreabilidade, saída em `.schematize/overdev/` + archive, MONTA-não-CONSOME;
+  parar para perguntar segue VETADO.
+
 ## [0.2.1] — 2026-08-21
 Saneamento do catálogo conforme a vistoria de 2026-08-21.
 

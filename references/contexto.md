@@ -126,3 +126,15 @@ Fechado o gate: entregue o contexto e **passe o bastão** — `schematize overde
   antes de codar paga o retrabalho evitado.
 - **Antes de um fan-out** (`/eng-orchestrate`) — o plano/checklist é o que se reparte entre os
   subagents; sem ele, o paralelismo vira colisão.
+
+## Quem executa o que o plano decompõe (custo)
+
+Piso **"Orquestrador não desenvolve; subagent barato executa"** (`schematize-engineering` →
+`references/orquestracao.md` §9). O agent principal (o que fala com o humano) **só planeja,
+despacha, supervisiona e revisa** — não desenvolve. Por isso a Fase 0 decompõe o PLAN/CHECKLIST em
+itens do tamanho de **uma micro-task de Sonnet** e marca cada item com a tag de executor
+(`[sonnet]` default; `[opus: <motivo>]` só após escalada registrada — ver
+`plano-checklist.md`). No laço, cada item é executado por **subagent `sonnet`**; o principal
+escreve o brief, revisa (diff + gate do item) e só então tickeia. Escada: `sonnet` → correção pelo
+**mesmo subagent** (≤2 rodadas) → re-decompor → `opus`. Esgotou Opus → `park` + `- [~]`
+(escalar não é pergunta bloqueante).

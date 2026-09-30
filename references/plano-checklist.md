@@ -26,6 +26,13 @@ A unidade do plano é o **item verificável**. Cada item carrega:
 - **Dependências** — o que vem antes (define a ordem, A.3).
 - **Risco / reversibilidade** — o que quebra se der errado; é reversível?
 - **Decisão que o justifica** — o `D<n>` de origem (rastreabilidade).
+- **Tamanho de UMA micro-task de Sonnet** — o item é uma micro-função/unidade com **entrada,
+  saída, arquivo-alvo e prova** explícitos na própria linha, pequeno o bastante para um
+  subagent `sonnet` acertar de primeira (piso "Orquestrador não desenvolve; subagent barato
+  executa", `schematize-engineering` → `references/orquestracao.md` §9). Item que exige
+  **"decidir arquitetura"** **não é micro**: o desenho é do orquestrador, resolvido aqui na Fase 0
+  (vira decisão `D<n>` + itens já desenhados), nunca delegado ao executor. Item grande demais →
+  re-decomponha antes de entregar o plano.
 
 ### A.3 Ordem topológica e paralelismo
 - **Ordem:** ordene os itens pela dependência (topológica). O que não depende de nada vem
@@ -81,18 +88,25 @@ Regras da convenção:
 - **Todo item de máquina precisa de prova** anexada na própria linha (ou logo abaixo): o comando
   ou teste que o fecha. `- [ ]` sem prova é `- [ ]` que ninguém sabe fechar.
 
+**Tag de executor (obrigatória em todo item de máquina/humano-assistido).** Cada item do
+CHECKLIST carrega `[sonnet]` (**default**) ou `[opus: <motivo>]` — esta última **só após escalada
+registrada** no checkpoint (Sonnet falhou 2 rodadas de correção pelo mesmo subagent **e** a
+re-decomposição; §9.3 da orquestração). A Fase 0 emite tudo como `[sonnet]`; quem troca a tag é o
+laço, ao escalar, com o motivo. Item `- [H ]` é do humano e `- [~]` é on-hold: não levam tag.
+
 Exemplo de bloco derivado (ilustrativo):
 
 ```markdown
 ## Objetivo: <frase>  (deriva de D1, D3, D4)
 
 ### Fase 1 — <nome>  (nós: svc.auth, handler.login:42)
-- [ ] Implementar validação de token no login  (prova: `go test ./auth -run TestLoginToken`)  [D3]
-- [ ] Rejeitar token expirado com 401  (prova: teste de rejeição verde)  [D3]
+- [ ] [sonnet] Implementar `validateToken(tok) -> Claims|Err` em `auth/token.go`  (prova: `go test ./auth -run TestLoginToken`)  [D3]
+- [ ] [sonnet] Rejeitar token expirado com 401 em `handler/login.go:42`  (prova: teste de rejeição verde)  [D3]
+- [ ] [opus: sonnet falhou 2 rodadas + re-decomposição no parser de claims aninhadas]  Corrigir `parseClaims` em `auth/claims.go`  (prova: `go test ./auth -run TestClaims`)  [D3]
 - [H ] Revisar mensagem de erro de login (não vazar se user existe)  [D4]  (aceite: revisão de segurança)
 - [~] Suportar login por passkey?  (pergunta parkeada em PERGUNTAS-OVERDEV.txt)  [ambígua, ex-D?]
-- [ ] Atualizar índice/MAPA (§39) com os nós novos  (prova: `/eng-index` sem diff pendente)
-- [ ] Archive do run (§28)  (prova: arquivo em <projeto>_archive/overdev/)
+- [ ] [sonnet] Atualizar índice/MAPA (§39) com os nós novos  (prova: `/eng-index` sem diff pendente)
+- [ ] [sonnet] Archive do run (§28)  (prova: arquivo em <projeto>_archive/overdev/)
 ```
 
 ### B.3 Rastreabilidade decisão→item→nó
@@ -104,6 +118,7 @@ Exemplo de bloco derivado (ilustrativo):
 
 ## Piso das etapas 3+4
 
+0. Itens do tamanho de **uma micro-task de Sonnet**, cada um com tag de executor `[sonnet]`/`[opus: motivo]`; "decidir arquitetura" nunca é item — o desenho é do orquestrador (§9 da orquestração da engineering).
 1. Plano com **escopo entra/NÃO-entra**, itens **verificáveis** (nó + prova + deps + risco),
    ordem topológica, paralelismo planejado, cobertura do grafo, riscos e DoD.
 2. Checklist **exaustivo por contagem**, cada item com **como provar**, cobrindo testes/edge/

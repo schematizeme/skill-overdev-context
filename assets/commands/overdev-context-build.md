@@ -22,8 +22,8 @@ plano vai apontar, por item, o(s) **nó(s)** (`arquivo:linha`) e as **arestas** 
 índice? gerá-lo é o 1º item do checklist** — não se planeja cego.
 
 ## 3. Planejar PESADO → `.schematize/overdev/PLAN.md` (`references/plano-checklist.md` Parte A)
-Escopo **entra / NÃO entra** (ancorado nas decisões); decomposição em itens **verificáveis** (cada
-um: **nó + prova + dependências + risco**); **ordem topológica**; **paralelismo** (≥3 independentes
+Escopo **entra / NÃO entra** (ancorado nas decisões); decomposição em itens **verificáveis** do tamanho de
+**uma micro-task de Sonnet** (cada um: **nó + prova + dependências + risco**); **ordem topológica**; **paralelismo** (≥3 independentes
 → fan-out `/eng-orchestrate`); **cobertura do grafo** (nós tocados vs devidos); **riscos**;
 **pontos de parada legítima**; **DoD** (§35) + archive (§28). Espelhe no archive.
 
@@ -34,6 +34,11 @@ provar**). Convenção de **2 níveis**:
   revisão — a máquina **não** auto-fecha); `- [~]` = **on-hold/parkeado** (não bloqueia).
 - Cubra testes, edge cases, erro/loading/vazio, doc-comment + índice/MAPA (§39), DoD, archive.
 - Checklist do usuário **incorporado inteiro** (nunca resumido). **Rastreabilidade** decisão→item→nó.
+- **Tag de executor por item:** `[sonnet]` (default) ou `[opus: <motivo>]` (só após escalada
+  registrada); cada item = **uma micro-task de Sonnet** (entrada/saída/arquivo-alvo/prova na linha).
+  "Decidir arquitetura" não é item — o desenho é seu (orquestrador), feito aqui na Fase 0. Ex.:
+  `- [ ] [sonnet] Implementar validateToken() em auth/token.go (prova: go test ./auth) [D3]`.
+  Piso: `schematize-engineering` → `references/orquestracao.md` §9.
 - Espelhe em `<projeto>_archive/overdev/OBJETIVO.md`.
 
 ## 5. Entregar o BRIEFING (`references/briefing.md`)

@@ -52,7 +52,8 @@ Os comandos ficam em `assets/commands/` e são instalados em `.claude/commands/`
 3. **Ancore no grafo** (`references/contexto.md` §2): o plano se prende ao **MAPA + adjacência**
    do índice (§39). Sem índice ainda? **gerá-lo é o 1º item** do checklist.
 4. **Planeje pesado, derive o checklist** (`references/plano-checklist.md`): escopo entra/NÃO
-   entra, decomposição em itens verificáveis, ordem topológica, paralelismo, riscos, DoD. O
+   entra, decomposição em itens verificáveis **do tamanho de uma micro-task de Sonnet, com tag
+   `[sonnet]`/`[opus: motivo]`**, ordem topológica, paralelismo, riscos, DoD. O
    checklist é a **projeção executável do plano**, exaustivo **por contagem**, na convenção de 2
    níveis (`- [ ]`/`- [H ]`/`- [~]`).
 5. **Entregue o briefing** (`references/briefing.md`): um documento coeso que amarra objetivo +
@@ -105,6 +106,13 @@ Independente do reference, estes limites nunca são cruzados:
 8. **Esta skill MONTA, não CONSOME.** Ela não entra no laço, não abre pool de pergunta
    bloqueante, não declara "pronto". Fechada a Fase 0, o `/eng-overdev` (ou `schematize overdev
    start`) assume o laço com o contexto já montado.
+
+9. **Orquestrador não desenvolve; subagent barato executa**
+   (`schematize-engineering` → `references/orquestracao.md` §9). A Fase 0 decompõe PLAN/CHECKLIST
+   em itens do tamanho de **uma micro-task de Sonnet**, cada um com tag de executor `[sonnet]`
+   (default) ou `[opus: <motivo>]` (só após escalada registrada); "decidir arquitetura" não é
+   item — o desenho é do orquestrador. O briefing declara que o principal só despacha/revisa e a
+   escada: sonnet → correção pelo mesmo subagent (≤2 rodadas) → re-decompor → opus.
 
 ## Relação com as outras skills
 

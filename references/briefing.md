@@ -65,6 +65,15 @@ buracos, não escondê-los.
   fechou — cada decisão virou item feito?, o checklist foi sanado?, on-hold foi respondido? Um
   briefing bem-amarrado é o que dá à auditoria um rastro auditável.
 
+## O que o briefing declara sobre EXECUÇÃO (custo)
+
+O briefing entregue ao laço deixa **explícito** o piso "Orquestrador não desenvolve; subagent
+barato executa" (`schematize-engineering` → `references/orquestracao.md` §9): o **principal não
+desenvolve — só despacha e revisa**; cada item do CHECKLIST (já com tag `[sonnet]`/`[opus:
+motivo]`) é executado por subagent `sonnet`; a escada de falha é **sonnet → correção pelo mesmo
+subagent (≤2 rodadas) → re-decompor → opus** (motivo no checkpoint). Resuma isto em 2–3 linhas no
+cabeçalho do briefing e referencie a §9; não duplique o texto.
+
 ## Passagem de bastão (fim da montagem)
 
 Com o briefing gravado e o gate da Fase 0 fechado (`contexto.md` §6), a montagem **terminou**.

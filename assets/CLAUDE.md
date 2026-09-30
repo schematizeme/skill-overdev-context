@@ -40,6 +40,15 @@ de agir — não trabalhe de memória.
    `- [~]` + `./PERGUNTAS-OVERDEV.txt`), não declara "pronto". Fechado o gate da Fase 0, passa o
    bastão pro `/eng-overdev`.
 
+9. **Orquestrador não desenvolve; subagent barato executa** (`schematize-engineering` →
+   `references/orquestracao.md` §9). O principal **só planeja, decompõe, despacha, supervisiona e
+   revisa** — no overdev, **cada item do checklist é executado por subagent `sonnet`**, nunca pelo
+   principal (que escreve o brief, revisa diff + gate e só então tickeia). Por isso o PLAN/CHECKLIST
+   sai decomposto em itens do tamanho de **uma micro-task de Sonnet**, cada um com tag `[sonnet]`
+   (default) ou `[opus: <motivo>]` (só após escalada registrada). Falhou → o **mesmo subagent
+   corrige** (≤2 rodadas) → re-decompõe → só então `opus`. Escalar não é pergunta (segue
+   VETADO perguntar); esgotou Opus → `park` + `- [~]`.
+
 ## Como se monta aqui
 
 - **`/overdev-context-build`:** roda as 5 etapas em ordem — colhe decisões (`.schematize/overdev/DECISOES.md`,
