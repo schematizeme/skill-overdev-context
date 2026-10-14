@@ -23,6 +23,7 @@ Saneamento: o texto da skill contradizia o hook do overdev e a Fase 0 não tinha
 - `scripts/check-contexto.sh` + `check-contexto.test.sh` (12 casos, vermelhos plantados): gate
   verificável da Fase 0 (artefatos, contagem por classe, decisão→item, tag de executor, grafo);
   referenciado no `SKILL.md`, no `contexto.md` §6 e no `/overdev-context-build`.
+- **Description** reduzida (~270 chars) para caber no orçamento de listagem (soma das 31 skills ≤ 8500; o Claude Code corta a listagem acima disso).
 
 ## [0.4.0] — 2026-09-30
 
