@@ -1,7 +1,7 @@
 ---
 name: schematize-overdev-context
 metadata:
-  version: 0.4.0
+  version: 0.5.0
 description: >-
   Monta a Fase 0 de um overdev antes do laço: colhe as decisões (DECISOES.md), ancora no grafo do índice, escreve o
   PLAN e deriva o CHECKLIST nas 3 classes ([ ] máquina, [H ] humano, [~] on-hold). Use ao iniciar/retomar overdev ou
@@ -26,7 +26,7 @@ Pular a fundação é a causa nº 1 de **plano raso, retrabalho e "reabrir o que
 Esta skill existe pra matar isso: **planejamento pesado antes de começar**, ancorado no código
 de verdade (o grafo), rastreável (cada decisão vira item, cada item aponta a decisão).
 
-**Versão:** skill `schematize-overdev-context` v0.4.0. Changelog em `CHANGELOG.md`.
+**Versão:** skill `schematize-overdev-context` v0.5.0. Changelog em `CHANGELOG.md`.
 
 ## Comandos (Claude Code)
 
