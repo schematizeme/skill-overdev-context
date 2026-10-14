@@ -3,8 +3,7 @@ name: schematize-overdev-context
 metadata:
   version: 0.5.1
 description: >-
-  Monta a Fase 0 do overdev antes do laço: colhe decisões (DECISOES.md), ancora no grafo do índice, escreve o PLAN e
-  deriva o CHECKLIST ([ ] máquina, [H ] humano, [~] on-hold). Use ao iniciar/retomar overdev. Não tickeia item.
+  Fase 0 do overdev: colhe decisões, ancora no grafo, escreve PLAN e deriva o CHECKLIST ([ ] máquina, [H ] humano, [~] on-hold). Use ao iniciar/retomar overdev. Não tickeia item.
 ---
 
 # O montador de contexto do overdev (schematize-overdev-context)
@@ -26,6 +25,30 @@ Esta skill existe pra matar isso: **planejamento pesado antes de começar**, anc
 de verdade (o grafo), rastreável (cada decisão vira item, cada item aponta a decisão).
 
 **Versão:** skill `schematize-overdev-context` v0.5.1. Changelog em `CHANGELOG.md`.
+
+## Precedência e herança (leia antes de divergir)
+
+<!-- herdado:engineering/precedencia:dominio intro="Esta skill é o recorte **Fase 0 do overdev** da base: monta decisões, plano e checklist antes do laço (`schematize-engineering` → `references/overdev.md` §0), sem substituir a base." cmd="overdev-context" -->Esta skill é o recorte **Fase 0 do overdev** da base: monta decisões, plano e checklist antes do laço (`schematize-engineering` → `references/overdev.md` §0), sem substituir a base.
+
+1. **Onde esta skill divergir da base, a BASE MANDA.** Aqui mora a especialização do domínio ou da
+   ferramenta — o como, o padrão, o gate. Divergência de *piso* é defeito desta skill, não variante local.
+2. **O que não está repetido aqui é HERDADO, não dispensado.** Esta skill herda os pisos da base e
+   os comandos dela cobrem o **domínio**, não o piso geral. Valem integralmente, sem cópia local:
+   - **§28 Archive** — `<projeto>/<projeto>_archive/` é **repositório git próprio, PRIVADO e
+     obrigatório**, criticidade 0 (`schematize-archive`).
+   - **§35 Definition of Done** e a lista de anti-padrões (citada por **título**, nunca por número).
+   - **§39 Índice/MAPA** — enumeração exaustiva (uma entrada por unidade chamável, `M == N`) e grafo
+     com arestas em ASCII (`A -> B`), nunca a seta unicode.
+   - **IAM** (`schematize-engineering` → `references/iam.md`): identidade ≠ email, ≥2 fatores, ReBAC
+     multi-tenant, argon2id-only para senha nova, sessão longa e logout irreversível.
+   - **Efeito externo** nunca sai de não-produção (`schematize-engineering` →
+     `references/efeitos-externos.md`).
+   - **Orquestração** (`schematize-engineering` → `references/orquestracao.md` §9): o principal não
+     desenvolve (é Claude Opus); executor mais barato que resolve — `haiku`/`sonnet` → Codex Terra → Cursor → `opus` só após falha; visual direto ao Codex; imagem nunca pelo Claude: detecta Codex/Gemini e pergunta ao usuário qual usar (Codex é a sugestão, não automática), nunca API paga.
+3. **QA, ops, IAM e índice não têm comando próprio aqui:** vêm da base `/eng-*`. Para trabalho
+   contínuo use `/eng-overdev`; para planejar `/eng-plan`; para varrer a base `/eng-scan`; para
+   revisão geral `/eng-review` (e `/eng-ops`, `/eng-iam`, `/eng-index`). Os comandos
+   `/overdev-context-*` cobrem o domínio desta skill; o piso geral é o da base.<!-- /herdado -->
 
 ## Comandos (Claude Code)
 

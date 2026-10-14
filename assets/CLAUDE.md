@@ -40,14 +40,8 @@ de agir — não trabalhe de memória.
    `- [~]` + `./PERGUNTAS-OVERDEV.txt`), não declara "pronto". Fechado o gate da Fase 0, passa o
    bastão pro `/eng-overdev`.
 
-9. **Orquestrador não desenvolve; subagent barato executa** (`schematize-engineering` →
-   `references/orquestracao.md` §9). O principal **só planeja, decompõe, despacha, supervisiona e
-   revisa** — no overdev, **cada item do checklist é executado por subagent `sonnet`**, nunca pelo
-   principal (que escreve o brief, revisa diff + gate e só então tickeia). Por isso o PLAN/CHECKLIST
-   sai decomposto em itens do tamanho de **uma micro-task de Sonnet**, cada um com tag `[sonnet]`
-   (default) ou `[opus: <motivo>]` (só após escalada registrada). Falhou → o **mesmo subagent
-   corrige** (≤2 rodadas) → re-decompõe → só então `opus`. Escalar não é pergunta (segue
-   VETADO perguntar); esgotou Opus → `park` + `- [~]`. **Sem frota ociosa** (`schematize-engineering` → `references/orquestracao.md` §9.6): agent idle com pendência executável volta ao trabalho; pendência que depende de outro agent → mata e enfileira com gatilho de dependência; terminou → mata.
+9. <!-- herdado:engineering/orquestracao:curto -->**Orquestrador não desenvolve; subagent barato executa.** O agent principal só planeja, despacha e revisa; ação onerosa vira micro-tasks para o executor mais barato que resolve: `haiku` (mecânico) / `sonnet` (código; falhou → mesmo subagent corrige, até 2 rodadas) → Codex `gpt-5.6-terra` → Cursor → subagent `opus` (motivo) → `park`; **visual vai direto ao Codex**; **imagem nunca pelo Claude: detectar Codex/Gemini e perguntar ao usuário qual usar (Codex é a sugestão), nunca API de imagem paga**; papéis em `agentes.toml`. No overdev, cada item do checklist vai a um subagent e o principal revisa antes do `- [x]`. **Sem frota ociosa:** idle com pendência volta ao trabalho; dependente de outro agent → mata e enfileira com gatilho; terminou → mata (§9.6). Detalhe: `schematize-engineering` → `references/orquestracao.md` §9.<!-- /herdado -->
+   A Fase 0 aplica isto assim: decompõe PLAN/CHECKLIST em itens de **uma micro-task de Sonnet**, cada um com tag `[sonnet]` (default) ou `[opus: <motivo>]` (só após escalada registrada); "decidir arquitetura" não é item — o desenho é do orquestrador; o briefing declara a escada.
 
 ## Como se monta aqui
 
