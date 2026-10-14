@@ -10,7 +10,7 @@ o laço é o `/eng-overdev` (motor `schematize overdev start`). A fronteira é d
 **funda**, lá se **executa**. Misturar as duas coisas é como a fundação vira rasa.
 
 O produto final são **cinco entregas coerentes** (quatro arquivos — `DECISOES.md`, `PLAN.md`,
-`CHECKLIST.md` e o briefing `CONTEXTO.md` — mais a ancoragem no grafo; o espelho `OBJETIVO.md` no
+`CHECKLIST.md` e o briefing `<data>-CONTEXTO.md` — mais a ancoragem no grafo; o espelho `OBJETIVO.md` no
 archive acompanha o checklist):
 
 | Etapa | Produz | Onde |
