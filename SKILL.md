@@ -3,9 +3,8 @@ name: schematize-overdev-context
 metadata:
   version: 0.5.0
 description: >-
-  Monta a Fase 0 de um overdev antes do laço: colhe as decisões (DECISOES.md), ancora no grafo do índice, escreve o
-  PLAN e deriva o CHECKLIST nas 3 classes ([ ] máquina, [H ] humano, [~] on-hold). Use ao iniciar/retomar overdev ou
-  antes de trabalho grande. Não tickeia item.
+  Monta a Fase 0 do overdev antes do laço: colhe decisões (DECISOES.md), ancora no grafo do índice, escreve o PLAN e
+  deriva o CHECKLIST ([ ] máquina, [H ] humano, [~] on-hold). Use ao iniciar/retomar overdev. Não tickeia item.
 ---
 
 # O montador de contexto do overdev (schematize-overdev-context)
