@@ -4,6 +4,26 @@ Todas as mudanças relevantes deste pacote, no formato [Keep a Changelog](https:
 com versionamento [SemVer](https://semver.org/lang/pt-BR/).
 
 
+## [0.5.0] — 2026-10-14
+
+Saneamento: o texto da skill contradizia o hook do overdev e a Fase 0 não tinha critério executável.
+
+### Corrigido
+- `- [~]` (on-hold) passa a ser descrito como ABERTO, igual ao `overdev-stop.sh`: sobrou `[H ]`/`[~]`
+  sem caminho → `.schematize/overdev/BLOCKED`. Antes o texto dizia que "não bloqueia" e que
+  `[x]` ou `[~]` era concluído, o oposto do que o hook faz.
+- "Convenção de 2 níveis" → "3 classes" (a lista sempre teve três).
+- Piso "orquestrador não desenvolve" deixou de ser cópia: bloco herdado (`sync-herdados`) no
+  `SKILL.md` e ponteiro curto no `contexto.md`.
+- Contagem de entregas esclarecida (quatro arquivos + ancoragem; `OBJETIVO.md` é o espelho) e o
+  briefing `overdev/<data>-CONTEXTO.md` alinhado à planta do archive.
+- `description` reescrita (<=350 caracteres).
+
+### Adicionado
+- `scripts/check-contexto.sh` + `check-contexto.test.sh` (12 casos, vermelhos plantados): gate
+  verificável da Fase 0 (artefatos, contagem por classe, decisão→item, tag de executor, grafo);
+  referenciado no `SKILL.md`, no `contexto.md` §6 e no `/overdev-context-build`.
+
 ## [0.4.0] — 2026-09-30
 
 Pedido do dono: agents idle poluem a tela e seguram recurso. O briefing passa a declarar a regra

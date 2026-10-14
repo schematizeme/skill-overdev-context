@@ -11,5 +11,5 @@ Instale/atualize a regra **sempre-on** de montagem de contexto do overdev na rai
    repo multi-skill, cada CLAUDE convive; o piso desta é aditivo.
 4. Se houver customização local, salve `./CLAUDE.md.bak` e reaplique por cima.
 5. Confirme a versão aplicada e destaque o **piso**: fundação antes do laço; decisão só se
-   acordada (ambíguo → on-hold); checklist exaustivo na convenção de 2 níveis; esta skill **monta**,
+   acordada (ambíguo → on-hold); checklist exaustivo na convenção de 3 classes; esta skill **monta**,
    o `/eng-overdev` **consome**.

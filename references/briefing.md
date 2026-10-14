@@ -37,7 +37,7 @@ As fases em ordem topológica, o que é **paralelizável** (unidades de fan-out 
 e os pontos de parada legítima. Link pro `PLAN.md`.
 
 ### 6. Checklist (estado inicial)
-- **Contagem por nível:** quantos `- [ ]` (máquina), `- [H ]` (humano), `- [~]` (on-hold). Esse é
+- **Contagem por classe:** quantos `- [ ]` (máquina), `- [H ]` (humano), `- [~]` (on-hold). Esse é
   o "tamanho" honesto do trabalho.
 - O **mapa decisão→item→nó** (a tabela de rastreabilidade fechada).
 - Link pro `CHECKLIST.md` control-plane.
@@ -58,7 +58,7 @@ buracos, não escondê-los.
   "<objetivo>"` grava os artefatos da Fase 0 em `.schematize/overdev/`; o briefing é o registro durável
   espelhado no archive.
 - **O painel `schematize`** (`schematize panel`, em construção): renderiza decisões, plano,
-  progresso do checklist (feitos/abertos/on-hold por nível) e a **tela de grafos** a partir
+  progresso do checklist (feitos/abertos/on-hold por classe) e a **tela de grafos** a partir
   desses arquivos. O briefing é a fonte legível; o painel é a vista interativa. Ambos são
   **read-mostly**: o juiz do "terminou" é o checklist + gate, não a tela.
 - **A `schematize-audit`** (depois): usa o briefing + os artefatos pra **cobrar** que o fundado
@@ -80,7 +80,7 @@ varredura roda a cada item fechado no laço.
 ## Passagem de bastão (fim da montagem)
 
 Com o briefing gravado e o gate da Fase 0 fechado (`contexto.md` §6), a montagem **terminou**.
-Reporte ao usuário: o objetivo, a contagem do checklist por nível, as decisões-chave (e defaults
+Reporte ao usuário: o objetivo, a contagem do checklist por classe, as decisões-chave (e defaults
 assumidos), as perguntas parkeadas, e o **comando pra soltar o laço** (`schematize overdev start
 "<objetivo>"` + `/eng-overdev`). **Esta skill não entra no laço** — ela entrega o contexto e passa
 o bastão.

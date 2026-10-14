@@ -9,14 +9,16 @@ Esta skill **monta o contexto**; ela **não tickeia**. Fechada a Fase 0 (o gate,
 o laço é o `/eng-overdev` (motor `schematize overdev start`). A fronteira é dura: aqui se
 **funda**, lá se **executa**. Misturar as duas coisas é como a fundação vira rasa.
 
-O produto final é **cinco artefatos coerentes**:
+O produto final são **cinco entregas coerentes** (quatro arquivos — `DECISOES.md`, `PLAN.md`,
+`CHECKLIST.md` e o briefing `CONTEXTO.md` — mais a ancoragem no grafo; o espelho `OBJETIVO.md` no
+archive acompanha o checklist):
 
 | Etapa | Produz | Onde |
 |---|---|---|
 | 1. Decisões | `DECISOES.md` (ADR-lite) | `.schematize/overdev/` + `<projeto>_archive/overdev/` |
 | 2. Grafo | ancoragem no índice (leitura/geração) | `<projeto>_archive/index/` (MAPA + adjacência) |
 | 3. Plano | `PLAN.md` (pesado) | `.schematize/overdev/` + `<projeto>_archive/overdev/` |
-| 4. Checklist | `CHECKLIST.md` (exaustivo, 2 níveis) | `.schematize/overdev/` (control-plane) + espelho `OBJETIVO.md` no archive |
+| 4. Checklist | `CHECKLIST.md` (exaustivo, 3 classes) | `.schematize/overdev/` (control-plane) + espelho `OBJETIVO.md` no archive |
 | 5. Briefing | **Documento de Contexto Geral** | `<projeto>_archive/overdev/<data>-CONTEXTO.md` |
 
 ## 1. Colher as DECISÕES já acordadas (varre a sessão + o repo)
@@ -60,7 +62,7 @@ independentes → fan-out via `/eng-orchestrate`), **mapa decisão→item**, **c
 
 > Anatomia detalhada do PLAN: `references/plano-checklist.md`.
 
-## 4. Derivar o CHECKLIST exaustivo (convenção de 2 níveis)
+## 4. Derivar o CHECKLIST exaustivo (convenção de 3 classes)
 
 O PLANO **gera o CHECKLIST** — o checklist é a **projeção executável do plano**, não uma lista
 solta. Grava em **`.schematize/overdev/CHECKLIST.md`** (control-plane que o hook do overdev lê) + espelho em
@@ -69,17 +71,18 @@ solta. Grava em **`.schematize/overdev/CHECKLIST.md`** (control-plane que o hook
 - **Exaustivo por CONTAGEM**: um item por linha, cada um pequeno e com **como provar**
   (comando/teste/observação). Cubra implementação, testes, edge cases, erro/loading/vazio,
   doc-comment + índice/MAPA (§39), DoD (§35), archive (§28).
-- **Convenção de 2 níveis**:
+- **Convenção de 3 classes**:
   - `- [ ]` / `- [x]` → item de **máquina**: fecha com **prova automática** (teste/gate/comando).
   - `- [H ]` / `- [H x]` → item que exige **verificação humana**: revisão de olho, decisão de
     produto, aceite visual/UX, aprovação. A máquina **não auto-fecha** item humano.
-  - `- [~]` → **on-hold/parkeado**: pergunta pendente (do §1 ou surgida no plano). **Não bloqueia**
-    o fim do run; espera resposta do usuário.
+  - `- [~]` → **on-hold/parkeado**: pergunta pendente (do §1 ou surgida no plano). **Conta como
+    ABERTO** (o hook `overdev-stop.sh` não deixa parar com `- [~]`): ou se resolve, ou, sem caminho,
+    vai para `.schematize/overdev/BLOCKED` com a pergunta.
 - Se o usuário **já tem um checklist**, ele é **incorporado inteiro** — nunca resumido/aparado.
 - **Rastreabilidade**: cada decisão de §1 vira **≥1 item**; cada item aponta a **decisão** que o
   justifica e o **nó do grafo** que toca.
 
-> Regras completas da derivação e da convenção de 2 níveis: `references/plano-checklist.md`.
+> Regras completas da derivação e da convenção de 3 classes: `references/plano-checklist.md`.
 
 ## 5. Entregar o DOCUMENTO DE CONTEXTO GERAL (o briefing)
 
@@ -102,9 +105,14 @@ A montagem só está **pronta pra soltar o laço** quando **tudo** isto vale:
 2. **grafo carregado** (ou ausência registrada + **item de gerá-lo** no checklist);
 3. **`PLAN.md` pesado** escrito (escopo entra/NÃO-entra, itens verificáveis com nó+prova+deps,
    ordem, paralelismo, riscos, DoD);
-4. `CHECKLIST.md` **derivado do plano** (exaustivo por contagem, convenção de 2 níveis,
+4. `CHECKLIST.md` **derivado do plano** (exaustivo por contagem, convenção de 3 classes,
    rastreável decisão→item→nó);
 5. **briefing** gravado no archive.
+
+**Critério verificável:** `scripts/check-contexto.sh [.schematize/overdev] [<projeto>_archive]`
+(instalado em `.claude/skills/schematize-overdev-context/scripts/`) confere por execução os
+artefatos, a contagem por classe, decisão→item e o grafo; exit 0 = gate fechado. Testado em
+`scripts/check-contexto.test.sh` (casos vermelhos plantados).
 
 Fechado o gate: entregue o contexto e **passe o bastão** — `schematize overdev start "<objetivo>"`
 + `/eng-overdev` assumem o laço. **Esta skill não entra no laço.**
@@ -129,12 +137,7 @@ Fechado o gate: entregue o contexto e **passe o bastão** — `schematize overde
 
 ## Quem executa o que o plano decompõe (custo)
 
-Piso **"Orquestrador não desenvolve; subagent barato executa"** (`schematize-engineering` →
-`references/orquestracao.md` §9). O agent principal (o que fala com o humano) **só planeja,
-despacha, supervisiona e revisa** — não desenvolve. Por isso a Fase 0 decompõe o PLAN/CHECKLIST em
-itens do tamanho de **uma micro-task de Sonnet** e marca cada item com a tag de executor
-(`[sonnet]` default; `[opus: <motivo>]` só após escalada registrada — ver
-`plano-checklist.md`). No laço, cada item é executado por **subagent `sonnet`**; o principal
-escreve o brief, revisa (diff + gate do item) e só então tickeia. Escada: `sonnet` → correção pelo
-**mesmo subagent** (≤2 rodadas) → re-decompor → `opus`. Esgotou Opus → `park` + `- [~]`
-(escalar não é pergunta bloqueante).
+Piso da casa em `schematize-engineering` → `references/orquestracao.md` §9 (texto completo
+lá e no piso 9 do `SKILL.md`; não é repetido aqui). Na Fase 0 isso significa: itens do tamanho de
+**uma micro-task de Sonnet**, cada um com a tag de executor `[sonnet]` (default) ou
+`[opus: <motivo>]` (só após escalada registrada — ver `plano-checklist.md`).

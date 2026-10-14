@@ -67,9 +67,9 @@ checklist é o **control-plane** que o hook do overdev lê; espelha em
 - Se o usuário **já tem um checklist**, **incorpore-o inteiro** — nunca resuma nem apare. Some os
   itens dele aos derivados do plano.
 
-### B.2 A convenção de 2 níveis (o coração da skill)
+### B.2 A convenção de 3 classes (o coração da skill)
 
-Cada linha do checklist tem um **nível** que diz **quem fecha** e **como**:
+Cada linha do checklist tem uma **classe** que diz **quem fecha** e **como**:
 
 | Marca | Nível | Fecha quando… |
 |---|---|---|
@@ -77,13 +77,13 @@ Cada linha do checklist tem um **nível** que diz **quem fecha** e **como**:
 | `- [x]` | **máquina**, feito | o teste/gate/comando do item passa (verificado, não na fé) |
 | `- [H ]` | **humano**, aberto | espera verificação humana (revisão de olho, decisão de produto, aceite UX/visual, aprovação) |
 | `- [H x]` | **humano**, feito | um humano **verificou e aceitou** |
-| `- [~]` | **on-hold / parkeado** | pergunta pendente; **não bloqueia** o fim do run |
+| `- [~]` | **on-hold / parkeado** | pergunta pendente; **conta como aberto** (sem caminho → `BLOCKED`) |
 
 Regras da convenção:
 - **A máquina não auto-fecha item humano.** Um `- [H ]` só vira `- [H x]` por aceite humano
   explícito — o gate automático o ignora ao contar "terminou". Isso protege o que exige olho
   (UX, segurança sensível, decisão de negócio) de ser marcado por um teste que passou.
-- **`- [~]` não bloqueia**, mas **fica visível**: cada on-hold tem uma pergunta em
+- **`- [~]` conta como aberto** (igual ao hook: só fecha respondendo, ou vai para `.schematize/overdev/BLOCKED` se não há caminho) e **fica visível**: cada on-hold tem uma pergunta em
   `./PERGUNTAS-OVERDEV.txt`. Ao ser respondido, vira `- [ ]`/`- [H ]` e entra no fluxo.
 - **Todo item de máquina precisa de prova** anexada na própria linha (ou logo abaixo): o comando
   ou teste que o fecha. `- [ ]` sem prova é `- [ ]` que ninguém sabe fechar.
@@ -123,6 +123,6 @@ Exemplo de bloco derivado (ilustrativo):
    ordem topológica, paralelismo planejado, cobertura do grafo, riscos e DoD.
 2. Checklist **exaustivo por contagem**, cada item com **como provar**, cobrindo testes/edge/
    erro/doc/DoD/archive — checklist do usuário **incorporado inteiro**.
-3. **Convenção de 2 níveis** aplicada (`- [ ]` máquina / `- [H ]` humano / `- [~]` on-hold); a
+3. **Convenção de 3 classes** aplicada (`- [ ]` máquina / `- [H ]` humano / `- [~]` on-hold); a
    máquina **não** auto-fecha item humano.
 4. **Rastreabilidade** decisão→item→nó fechada.

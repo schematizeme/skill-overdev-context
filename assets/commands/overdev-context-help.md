@@ -9,7 +9,7 @@ linha cada:
 - `/overdev-context-build` — **monta a Fase 0 / fundação** do overdev, em 5 etapas: colhe as
   DECISÕES acordadas (`.schematize/overdev/DECISOES.md`, ADR-lite) → ancora no GRAFO do índice (§39) →
   escreve o PLAN pesado (`.schematize/overdev/PLAN.md`) → deriva o CHECKLIST exaustivo por contagem
-  (`.schematize/overdev/CHECKLIST.md`, convenção de 2 níveis `- [ ]`/`- [H ]`/`- [~]`) → entrega o
+  (`.schematize/overdev/CHECKLIST.md`, convenção de 3 classes `- [ ]`/`- [H ]`/`- [~]`) → entrega o
   DOCUMENTO DE CONTEXTO GERAL (briefing) no archive. **Monta o que o `/eng-overdev` consome; não
   entra no laço.**
 - `/overdev-context-load` — carrega à força TODO o corpo normativo (contexto, decisões,
@@ -23,6 +23,6 @@ Depois da lista, lembre a **regra de ouro**: *fundação antes do laço.* Esta s
 contexto (decisões → grafo → plano → checklist → briefing); quem **CONSOME** e tickeia item a
 item é o `/eng-overdev` (motor `schematize overdev start`). Decisão só entra se **acordada** (com
 origem); ambíguo vira `- [~]` on-hold, nunca decisão de fachada; o checklist é **exaustivo por
-contagem** na convenção de 2 níveis (máquina `- [ ]` / humano `- [H ]` / on-hold `- [~]`). Detalhe
+contagem** na convenção de 3 classes (máquina `- [ ]` / humano `- [H ]` / on-hold `- [~]`). Detalhe
 normativo em `references/` da skill `schematize-overdev-context`; a base (overdev §0, índice §39,
 DoD §35, archive §28) é a `schematize-engineering`; a `schematize-audit` depois cobra que fechou.

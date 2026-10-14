@@ -28,9 +28,9 @@ de agir — não trabalhe de memória.
 4. **Checklist exaustivo POR CONTAGEM, cada item com como provar.** Um item por linha, pequeno,
    com o teste/comando/gate que o fecha. Checklist magro = "terminei" precoce embutido. Checklist
    do usuário **incorporado inteiro**, nunca resumido.
-5. **Convenção de 2 níveis.** `- [ ]`/`- [x]` = **máquina** (fecha com prova automática);
+5. **Convenção de 3 classes.** `- [ ]`/`- [x]` = **máquina** (fecha com prova automática);
    `- [H ]`/`- [H x]` = **humano** (aceite/revisão — a máquina **não** auto-fecha); `- [~]` =
-   **on-hold** (não bloqueia). Cada nível fecha do seu jeito.
+   **on-hold** (conta como aberto; sem caminho → `BLOCKED`). Cada classe fecha do seu jeito.
 6. **Rastreabilidade decisão→item→nó.** Cada decisão vira ≥1 item; cada item aponta a decisão e o
    nó. Decisão sem item é esquecida; item sem decisão/nó é solto.
 7. **Saída durável no archive + control-plane.** `.schematize/overdev/` (`DECISOES.md`, `PLAN.md`,
@@ -54,7 +54,7 @@ de agir — não trabalhe de memória.
 - **`/overdev-context-build`:** roda as 5 etapas em ordem — colhe decisões (`.schematize/overdev/DECISOES.md`,
   ADR-lite) → ancora no grafo (`/eng-index`, §39) → PLAN pesado (`.schematize/overdev/PLAN.md`: escopo
   entra/NÃO-entra, itens verificáveis com nó+prova+deps+risco, ordem, paralelismo, riscos, DoD) →
-  CHECKLIST exaustivo (`.schematize/overdev/CHECKLIST.md`, 2 níveis, rastreável) → briefing
+  CHECKLIST exaustivo (`.schematize/overdev/CHECKLIST.md`, 3 classes, rastreável) → briefing
   (`<project>_archive/overdev/<data>-CONTEXTO.md`).
 - **Gate da Fase 0:** decisões colhidas · grafo carregado (ou ausência + item de gerá-lo) · plano
   pesado · checklist derivado · briefing gravado → **passa o bastão**: `schematize overdev start

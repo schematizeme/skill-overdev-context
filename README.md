@@ -39,13 +39,13 @@ unzip skill-overdev-context.zip -d .claude/skills/
 
 - **SKILL.md** — o contrato: 9 pisos inegociáveis (fundação antes do laço; decisão só entra se
   acordada e com origem rastreável; plano ancorado no grafo real do índice; checklist exaustivo
-  por contagem; convenção de 2 níveis `- [ ]`/`- [H ]`/`- [~]`; rastreabilidade decisão→item→nó;
+  por contagem; convenção de 3 classes `- [ ]`/`- [H ]`/`- [~]`; rastreabilidade decisão→item→nó;
   saída durável no archive + control-plane `.schematize/overdev/`; esta skill MONTA, não CONSOME) + mapa de
   references.
 - **references/** — `contexto` (o método completo: as 5 etapas decisões → grafo → plano →
   checklist → briefing, o gate da Fase 0, o que a skill NÃO faz), `decisoes` (varrer a sessão/repo,
   o que conta como decisão acordada, o formato ADR-lite, o mapa decisão→item), `plano-checklist`
-  (anatomia do PLAN pesado e a derivação do CHECKLIST exaustivo na convenção de 2 níveis),
+  (anatomia do PLAN pesado e a derivação do CHECKLIST exaustivo na convenção de 3 classes),
   `briefing` (anatomia do DOCUMENTO DE CONTEXTO GERAL e como o `/eng-overdev` + o painel consomem).
 - **assets/commands/** — `/overdev-context-help`, `/overdev-context-build`,
   `/overdev-context-load`, `/overdev-context-claude`, `/overdev-context-cc`,

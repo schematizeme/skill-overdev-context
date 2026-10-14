@@ -1,5 +1,5 @@
 ---
-description: schematize-overdev-context — monta a Fase 0 / fundação de um overdev: colhe as DECISÕES acordadas → ancora no GRAFO do índice → PLAN pesado → CHECKLIST exaustivo (2 níveis) → DOCUMENTO DE CONTEXTO GERAL (briefing). MONTA o que o /eng-overdev CONSOME; NÃO entra no laço.
+description: schematize-overdev-context — monta a Fase 0 / fundação de um overdev: colhe as DECISÕES acordadas → ancora no GRAFO do índice → PLAN pesado → CHECKLIST exaustivo (3 classes) → DOCUMENTO DE CONTEXTO GERAL (briefing). MONTA o que o /eng-overdev CONSOME; NÃO entra no laço.
 argument-hint: "<objetivo do overdev> [| dir do archive, ex: <projeto>_archive]"
 ---
 
@@ -29,9 +29,9 @@ Escopo **entra / NÃO entra** (ancorado nas decisões); decomposição em itens 
 
 ## 4. Derivar o CHECKLIST → `.schematize/overdev/CHECKLIST.md` (`references/plano-checklist.md` Parte B)
 Projeção **executável** do plano, **exaustiva por contagem** (1 item/linha, cada um com **como
-provar**). Convenção de **2 níveis**:
+provar**). Convenção de **3 classes**:
 - `- [ ]`/`- [x]` = **máquina** (fecha com teste/gate); `- [H ]`/`- [H x]` = **humano** (aceite/
-  revisão — a máquina **não** auto-fecha); `- [~]` = **on-hold/parkeado** (não bloqueia).
+  revisão — a máquina **não** auto-fecha); `- [~]` = **on-hold/parkeado** (conta como aberto; sem caminho → `BLOCKED`).
 - Cubra testes, edge cases, erro/loading/vazio, doc-comment + índice/MAPA (§39), DoD, archive.
 - Checklist do usuário **incorporado inteiro** (nunca resumido). **Rastreabilidade** decisão→item→nó.
 - **Tag de executor por item:** `[sonnet]` (default) ou `[opus: <motivo>]` (só após escalada
@@ -43,13 +43,14 @@ provar**). Convenção de **2 níveis**:
 
 ## 5. Entregar o BRIEFING (`references/briefing.md`)
 **Documento de Contexto Geral** coeso: objetivo + escopo + decisões (resumo+link) + grafo/cobertura
-+ plano (resumo+link) + checklist (contagem por nível + mapa decisão→item→nó) + riscos + DoD +
++ plano (resumo+link) + checklist (contagem por classe + mapa decisão→item→nó) + riscos + DoD +
 on-holds. Grava em `<projeto>_archive/overdev/<YYYY-MM-DD>-CONTEXTO.md`.
 
 ## 6. Gate da Fase 0 e passagem de bastão
+Rode o gate verificável: `bash .claude/skills/schematize-overdev-context/scripts/check-contexto.sh .schematize/overdev <projeto>_archive` — exit 0 ou volte e corrija a falha impressa.
 Só está pronto quando: `DECISOES.md` colhido · grafo carregado (ou ausência + item de gerá-lo) ·
-`PLAN.md` pesado · `CHECKLIST.md` derivado (2 níveis, rastreável) · briefing gravado. Fechado:
-**reporte** (objetivo, contagem do checklist por nível, decisões-chave + defaults, perguntas
+`PLAN.md` pesado · `CHECKLIST.md` derivado (3 classes, rastreável) · briefing gravado. Fechado:
+**reporte** (objetivo, contagem do checklist por classe, decisões-chave + defaults, perguntas
 parkeadas) e **passe o bastão**: `schematize overdev start "<objetivo>"` + `/eng-overdev` assumem
 o laço. **NÃO entre no laço aqui.**
 

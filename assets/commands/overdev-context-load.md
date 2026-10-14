@@ -15,7 +15,7 @@ sessão, isto **não é opcional**.
      (vs abandonada/ambígua), o **formato ADR-lite**, o mapa decisão→item, onde gravar.
    - `plano-checklist.md` — etapas 3+4: anatomia do **PLAN pesado** (escopo, itens verificáveis
      com nó+prova+deps+risco, ordem, paralelismo, cobertura, riscos, DoD) e a **derivação do
-     CHECKLIST** exaustivo por contagem, com a **convenção de 2 níveis** (`- [ ]` máquina /
+     CHECKLIST** exaustivo por contagem, com a **convenção de 3 classes** (`- [ ]` máquina /
      `- [H ]` humano / `- [~]` on-hold) detalhada.
    - `briefing.md` — etapa 5: a **anatomia do Documento de Contexto Geral** (objetivo, decisões,
      grafo, plano, checklist, riscos, DoD, on-holds), onde grava e como o `/eng-overdev` + o
@@ -26,7 +26,7 @@ sessão, isto **não é opcional**.
 3. Deste ponto, aplique como regra inegociável: **fundação antes do laço** (5 etapas antes de
    qualquer item); **decisão só se acordada** com origem (ambíguo → on-hold, nunca de fachada);
    **plano ancorado no grafo real** (sem índice → gerá-lo é o 1º item); **checklist exaustivo por
-   contagem** na **convenção de 2 níveis**; **rastreabilidade** decisão→item→nó; **saída durável**
+   contagem** na **convenção de 3 classes**; **rastreabilidade** decisão→item→nó; **saída durável**
    em `.schematize/overdev/` + `<projeto>_archive/overdev/`; e a fronteira dura — esta skill **MONTA**, o
    `/eng-overdev` **CONSOME** (não tickeie, não declare "pronto").
 

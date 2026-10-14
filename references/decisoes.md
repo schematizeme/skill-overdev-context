@@ -69,7 +69,7 @@ resolvida), **não invente**. Registre-o como candidato a `- [~]` on-hold:
 
 - anote a **pergunta** (o que precisa ser decidido) — vai pra `./PERGUNTAS-OVERDEV.txt` quando o
   overdev começar;
-- marque o **item** correspondente como `- [~]` no checklist (não bloqueia o fim do run);
+- marque o **item** correspondente como `- [~]` no checklist (conta como aberto; sem caminho → `BLOCKED`);
 - se der pra **seguir com um default reversível**, faça isso e **promova a decisão** (§2, linha
   do default) — parkeia só o que for de fato irreversível/ambíguo demais.
 
